@@ -1,37 +1,53 @@
-from nltk.corpus import stopwords
-from nltk import word_tokenize
-from string import punctuation
-from pymorphy2 import MorphAnalyzer
 import pandas as pd
+import nltk
+from nltk.corpus import stopwords
+import pymorphy2
+import re
+from loguru import logger
+from datetime import datetime
+
+morph = pymorphy2.MorphAnalyzer()
+stops = stopwords.words('english')
+logger.add ("data/info_{time}.log",
+            colorize=True,
+            format="<green>{time}</green> <level>{message}</level>",
+            level="INFO")
 
 
-def preprocessing(text):
+@logger.catch
+def preprocessor(text):
     words = nltk.word_tokenize(text)
     words_filtered = [word.lower()
-                    for word in words if
-                    len(word) > 2
-                    and word not in stops
-                    and not re.search(r'\W+', word)
-                    and not re.search(r'\d+', word)
-                    and not re.search('_', word)
-    ]
+                      for word in words if
+                      len(word) > 2
+                      and word not in stops
+                      and not re.search(r'\W+', word)
+                      and not re.search(r'\d+', word)
+                      and not re.search('_', word)
+                      ]
+    words_lemma = [morph.parse(w)[0].normal_form for w in words_filtered]
+    return " ".join(words_lemma)
 
-    words_lemmatized=[morph.parse(w)[0].normal_form for w in words_filtered]
-    return (words_lemmatized)
 
-
+@logger.catch
 def main():
-    print ('raw data pre-processing')
-
+    start = datetime.now()
     df = pd.read_csv('data/raw.csv',
                      index_col=False,
                      skip_blank_lines=True,
                      usecols=['CATEGORY', 'MESSAGE'])
+    df['tokens'] = df['MESSAGE'].apply(preprocessor)
+    df[['tokens','CATEGORY']].to_csv('data/processed.csv', index=False)
+
+    end = datetime.now()
+    logger.info(f'preprocessor.py ran in {(end-start).total_seconds()} seconds')
 
 
-    morph = MorphAnalyzer()
-    stopwords = stopwords.words('english')
-    tokens = word_tokenize(text)
+if __name__ == '__main__':
+    main()
+
+
+
 
 
 
