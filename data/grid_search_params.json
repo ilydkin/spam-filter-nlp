@@ -1,0 +1,153 @@
+{
+    "LogisticRegression": {
+        "C": [
+            1.0,
+            0.8,
+            0.6
+        ],
+        "penalty": [
+            "l2",
+            "l1"
+        ],
+        "random_state": [
+            42,
+            1453
+        ],
+        "solver": [
+            "saga",
+            "liblinear"
+        ]
+    },
+    "SGDClassifier": {
+        "alpha": [
+            0.0001,
+            0.001,
+            0.01
+        ],
+        "penalty": [
+            "l2",
+            "l1"
+        ],
+        "random_state": [
+            42,
+            1453
+        ],
+        "loss": [
+            "hinge",
+            "perceptron",
+            "squared_error"
+        ]
+    },
+    "DecisionTreeClassifier": {
+        "criterion": [
+            "gini",
+            "entropy",
+            "log_loss"
+        ],
+        "splitter": [
+            "best",
+            "random"
+        ],
+        "max_depth": [
+            null,
+            100,
+            10
+        ]
+    },
+    "RandomForestClassifier": {
+        "criterion": [
+            "gini",
+            "entropy",
+            "log_loss"
+        ],
+        "n_estimators": [
+            100,
+            200,
+            300
+        ]
+    },
+    "GradientBoostingClassifier": {
+        "criterion": [
+            "friedman_mse",
+            "squared_error"
+        ],
+        "n_estimators": [
+            100,
+            200,
+            300
+        ]
+    },
+    "ExtraTreesClassifier": {
+        "criterion": [
+            "gini",
+            "entropy",
+            "log_loss"
+        ],
+        "n_estimators": [
+            100,
+            200,
+            300
+        ]
+    },
+    "AdaBoostClassifier": {
+        "algorithm": [
+            "SAMME.R",
+            "SAMME"
+        ],
+        "n_estimators": [
+            50,
+            100,
+            200
+        ]
+    },
+    "SVC": {
+        "C": [
+            1.0,
+            2.0
+        ],
+        "kernel": [
+            "linear",
+            "poly",
+            "rbf",
+            "sigmoid"
+        ]
+    },
+    "GaussianNB": {
+        "var_smoothing": [
+            1e-09,
+            1e-08,
+            1e-07
+        ]
+    },
+    "MLPClassifier": {
+        "activation": [
+            "identity",
+            "logistic",
+            "tanh",
+            "relu"
+        ],
+        "hidden_layer_sizes": [
+            100,
+            200
+        ]
+    },
+    "KNeighborsClassifier": {
+        "algorithm": [
+            "auto",
+            "ball_tree",
+            "kd_tree",
+            "brute"
+        ],
+        "p": [
+            1,
+            2
+        ]
+    },
+    "XGBClassifier": {
+        "booster": [
+            "gbtree",
+            "gblinear",
+            "dart"
+        ]
+    }
+}

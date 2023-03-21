@@ -1,8 +1,9 @@
+import re
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
 import pymorphy2
-import re
+
 from loguru import logger
 from datetime import datetime
 
