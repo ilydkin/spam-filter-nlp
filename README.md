@@ -3,10 +3,6 @@
 The project is another small fantasy about ML automation. 
 Here you have to ran 3 scripts to get an educated e-mail spam filter model with 98% accuracy, ready for deployment 
 
-You start with a raw .csv file with a bunch of e-mails and after running
-3 scripts consequently you get a model with 98% accuracy, selected out of 12 candidate estimators,
-checked in totalling 540 configurations by GridSearch 
-
 1. You start with `data/raw.csv` file, bearing e-mails with 'spam' denotation where applicable.
 2. `preprocessor.py` applies `stopwords`, `regex`, and `lemmatizer` to parse and process the e-mail and make `data/processed.csv`, which is a fine feed for the models. 
 3. `grid_search.ipynb` is a notebook to make `data/grid_search_params.json` bearing configuration parameters for the models you want to try.
