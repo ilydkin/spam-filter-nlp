@@ -14,7 +14,7 @@ from sklearn.neural_network import MLPClassifier
 from xgboost import XGBClassifier
 
 from sklearn.model_selection import KFold, cross_validate, GridSearchCV
-from sklearn.feature_extraction.text import TfidfVectorizer, TfidfTransformer, HashingVectorizer, CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer, HashingVectorizer, CountVectorizer
 from sklearn.pipeline import Pipeline
 
 transformers = (

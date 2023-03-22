@@ -2,12 +2,12 @@ import re
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
-import pymorphy2
+from pymorphy2 import MorphAnalyzer
 
 from loguru import logger
 from datetime import datetime
 
-morph = pymorphy2.MorphAnalyzer()
+morph = MorphAnalyzer()
 stops = stopwords.words('english')
 logger.add ("data/logs/info_{time}.log",
             colorize=True,
