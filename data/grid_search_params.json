@@ -34,8 +34,7 @@
         ],
         "loss": [
             "hinge",
-            "perceptron",
-            "squared_error"
+            "perceptron"
         ]
     },
     "DecisionTreeClassifier": {
@@ -68,8 +67,7 @@
     },
     "GradientBoostingClassifier": {
         "criterion": [
-            "friedman_mse",
-            "squared_error"
+            "friedman_mse"
         ],
         "n_estimators": [
             100,

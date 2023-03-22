@@ -9,7 +9,7 @@ from datetime import datetime
 
 morph = pymorphy2.MorphAnalyzer()
 stops = stopwords.words('english')
-logger.add ("data/info_{time}.log",
+logger.add ("data/logs/info_{time}.log",
             colorize=True,
             format="<green>{time}</green> <level>{message}</level>",
             level="INFO")
@@ -27,7 +27,7 @@ def preprocessor(text):
                       and not re.search('_', word)
                       ]
     words_lemma = [morph.parse(w)[0].normal_form for w in words_filtered]
-    return " ".join(words_lemma)
+    return words_lemma
 
 
 @logger.catch
@@ -38,7 +38,8 @@ def main():
                      skip_blank_lines=True,
                      usecols=['CATEGORY', 'MESSAGE'])
     df['tokens'] = df['MESSAGE'].apply(preprocessor)
-    df[['tokens','CATEGORY']].to_csv('data/processed.csv', index=False)
+    df1= df.dropna()
+    df1[['tokens','CATEGORY']].to_csv('data/processed.csv', index=False)
 
     end = datetime.now()
     logger.info(f'preprocessor.py ran in {(end-start).total_seconds()} seconds')
