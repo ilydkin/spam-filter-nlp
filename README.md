@@ -1,4 +1,4 @@
-# NLP message analyzer, spam filter
+# 2023.03_NLP message analyzer, spam filter
 
 The project is another small fantasy about ML automation. 
 Here you have to ran 3 scripts to get an educated e-mail spam filter model with 98% accuracy, ready for deployment. 
